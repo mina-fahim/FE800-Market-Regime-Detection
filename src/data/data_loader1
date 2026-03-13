@@ -1,0 +1,204 @@
+import pandas as pd
+from xbbg import blp
+
+# -----------------------------------
+# Date range
+# -----------------------------------
+
+START_DATE = "1999-12-31"
+END_DATE = pd.Timestamp.today().strftime("%Y-%m-%d")
+
+# -----------------------------------
+# ETF universe
+# -----------------------------------
+
+ETFS = [
+    "SPY US Equity",
+    "IVE US Equity",
+    "IVW US Equity",
+    "IWM US Equity",
+    "SHY US Equity",
+    "IEF US Equity",
+    "TLT US Equity",
+    "LQD US Equity",
+    "HYG US Equity",
+    "GLD US Equity",
+]
+
+# -----------------------------------
+# Equity / credit / gold indices
+# -----------------------------------
+
+INDICES = [
+    "SPX Index",
+    "RLV Index",
+    "RTY Index",
+    "LUACTRUU Index",
+    "LF98TRUU Index",
+    "GOLDLNPM Index",
+]
+
+# -----------------------------------
+# Treasury yields
+# -----------------------------------
+
+TREASURY_YIELDS = [
+    "GT2 Govt",
+    "GT10 Govt",
+    "GT30 Govt",
+]
+
+# -----------------------------------
+# Macro indicators
+# -----------------------------------
+
+MACRO = [
+    "CPI Index",
+    "CPURNSA Index",
+    "CONSSENT Index",
+    "CONCCONF Index",
+]
+
+# -----------------------------------
+# Credit spreads
+# -----------------------------------
+
+CREDIT_SPREADS = [
+    "LUAS Index",     # Investment grade spread
+    "LF98OAS Index",  # High yield spread
+]
+
+# -----------------------------------
+# ETF → Benchmark mapping
+# -----------------------------------
+
+benchmark_map = pd.DataFrame(
+    {
+        "ETF": ETFS,
+        "Benchmark": [
+            "SPX Index",
+            "RLV Index",
+            "SPX Index",
+            "RTY Index",
+            "GT2 Govt",
+            "GT10 Govt",
+            "GT30 Govt",
+            "LUACTRUU Index",
+            "LF98TRUU Index",
+            "GOLDLNPM Index",
+        ],
+    }
+)
+
+# -----------------------------------
+# Download ETF prices
+# -----------------------------------
+
+print("Downloading ETF prices...")
+
+etf_prices = blp.bdh(
+    tickers=ETFS,
+    flds="PX_LAST",
+    start_date=START_DATE,
+    end_date=END_DATE,
+)
+
+etf_prices.columns = etf_prices.columns.droplevel(1)
+
+# -----------------------------------
+# Download index prices
+# -----------------------------------
+
+print("Downloading index prices...")
+
+index_prices = blp.bdh(
+    tickers=INDICES,
+    flds="PX_LAST",
+    start_date=START_DATE,
+    end_date=END_DATE,
+)
+
+index_prices.columns = index_prices.columns.droplevel(1)
+
+# -----------------------------------
+# Download treasury yields
+# -----------------------------------
+
+print("Downloading treasury yields...")
+
+yields = blp.bdh(
+    tickers=TREASURY_YIELDS,
+    flds="PX_LAST",
+    start_date=START_DATE,
+    end_date=END_DATE,
+)
+
+yields.columns = yields.columns.droplevel(1)
+
+# convert to decimal
+yields = yields / 100
+
+# -----------------------------------
+# Bond return proxies (duration method)
+# -----------------------------------
+
+dy = yields.diff()
+
+duration = {
+    "GT2 Govt": 1.9,
+    "GT10 Govt": 7.5,
+    "GT30 Govt": 17,
+}
+
+bond_returns = pd.DataFrame(index=yields.index)
+
+bond_returns["SHY_proxy"] = -duration["GT2 Govt"] * dy["GT2 Govt"]
+bond_returns["IEF_proxy"] = -duration["GT10 Govt"] * dy["GT10 Govt"]
+bond_returns["TLT_proxy"] = -duration["GT30 Govt"] * dy["GT30 Govt"]
+
+# -----------------------------------
+# Download macro data
+# -----------------------------------
+
+print("Downloading macro data...")
+
+macro_data = blp.bdh(
+    tickers=MACRO,
+    flds="PX_LAST",
+    start_date=START_DATE,
+    end_date=END_DATE,
+)
+
+macro_data.columns = macro_data.columns.droplevel(1)
+
+# -----------------------------------
+# Download credit spreads
+# -----------------------------------
+
+print("Downloading credit spreads...")
+
+credit_spread_data = blp.bdh(
+    tickers=CREDIT_SPREADS,
+    flds="PX_LAST",
+    start_date=START_DATE,
+    end_date=END_DATE,
+)
+
+credit_spread_data.columns = credit_spread_data.columns.droplevel(1)
+
+# -----------------------------------
+# Save datasets
+# -----------------------------------
+
+print("Saving CSV files...")
+
+etf_prices.to_csv("etf_prices.csv")
+index_prices.to_csv("index_prices.csv")
+yields.to_csv("treasury_yields.csv")
+bond_returns.to_csv("bond_return_proxies.csv")
+macro_data.to_csv("macro_data.csv")
+credit_spread_data.to_csv("credit_spreads.csv")
+
+benchmark_map.to_csv("benchmark_map.csv", index=False)
+
+print("All datasets saved successfully.")
