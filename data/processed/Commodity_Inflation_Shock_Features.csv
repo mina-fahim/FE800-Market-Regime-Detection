@@ -1,4 +1,4 @@
-﻿Date,Oil_return,Oil_volatility,Oil_Annualized_volatility
+﻿Date,Oil_return,Oil_volatility_21d_rolling,Oil_Annualized_volatility
 1/4/2000,,,
 1/5/2000,-0.027433142,0.017359794,
 1/6/2000,-0.00464626,0.016701126,
