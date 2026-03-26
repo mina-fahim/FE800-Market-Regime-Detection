@@ -15,7 +15,7 @@ FE800-Market-Regime-Detection
 │   │   ├── semi_markov_model.py
 │   │   ├── jump_model.py
 │   │   ├── rhsm_model.py
-│   │   └── ml_regime_model.py
+│   │   └── ml_regime_model.py | Reference: DeePM (2026) + CJM (Continuous Jump Model, 2024) 
 │   │
 │   ├── data/            # Data loading and preprocessing
 │   │   └── data_loader.py
