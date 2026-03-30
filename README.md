@@ -11,11 +11,11 @@ FE800-Market-Regime-Detection
 ├── src/                 # Main source code
 │   │
 │   ├── models/          # Regime detection models
-│   │   ├── hmm_model.py         | Reference: HMM vs HSMM (2024)
-│   │   ├── semi_markov_model.py | Reference: HMM vs HSMM (2024)
-│   │   ├── jump_model.py        | Reference: Regularized Jump Models (2024)
-│   │   ├── rhsm_model.py        | Reference: rHSM (2024)
-│   │   └── ml_regime_model.py   | Reference: DeePM (2026) and Continuous Jump Model (CJM, 2024)
+│   │   ├── hmm_model.py         |Members: Niti/ Darshan |Reference: HMM vs HSMM (2024)
+│   │   ├── semi_markov_model.py |Members: Nabil/ Willie |Reference: HMM vs HSMM (2024)
+│   │   ├── jump_model.py        |Members: Ojaus         |Reference: Regularized Jump Models (2024)
+│   │   ├── rhsm_model.py        |Members: Niti/ Darshan |Reference: rHSM (2024)
+│   │   └── ml_regime_model.py   |Members: Mina          |Reference: DeePM (2026) and Continuous Jump Model (CJM, 2024)
 │   │
 │   ├── data/            # Data loading and preprocessing
 │   │   └── data_loader.py
