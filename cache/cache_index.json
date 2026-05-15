@@ -1,0 +1,134 @@
+[
+  {
+    "key": "ML_Moderate_f57aa66187",
+    "model": "ML",
+    "profile": "Moderate",
+    "sharpe": 1.081,
+    "ann_ret": "13.4%",
+    "switches": 34,
+    "runtime": 72.2,
+    "date": "2026-05-10 18:27",
+    "size_mb": 0.3
+  },
+  {
+    "key": "Jump_Moderate_b6b1092064",
+    "model": "Jump",
+    "profile": "Moderate",
+    "sharpe": 1.072,
+    "ann_ret": "13.8%",
+    "switches": 8,
+    "runtime": 197.5,
+    "date": "2026-05-10 18:39",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HMM_Moderate_6d4b017b3b",
+    "model": "HMM",
+    "profile": "Moderate",
+    "sharpe": 0.859,
+    "ann_ret": "11.0%",
+    "switches": 31,
+    "runtime": 26.6,
+    "date": "2026-05-10 18:40",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HSMM_Moderate_4d440ea00f",
+    "model": "HSMM",
+    "profile": "Moderate",
+    "sharpe": 0.788,
+    "ann_ret": "11.1%",
+    "switches": 25,
+    "runtime": 199.0,
+    "date": "2026-05-10 18:44",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HMM_Conservative_76116f29a4",
+    "model": "HMM",
+    "profile": "Conservative",
+    "sharpe": 0.864,
+    "ann_ret": "9.1%",
+    "switches": 31,
+    "runtime": 65.1,
+    "date": "2026-05-10 19:40",
+    "size_mb": 0.3
+  },
+  {
+    "key": "ML_Conservative_a41982e916",
+    "model": "ML",
+    "profile": "Conservative",
+    "sharpe": 1.092,
+    "ann_ret": "11.1%",
+    "switches": 34,
+    "runtime": 227.4,
+    "date": "2026-05-10 19:49",
+    "size_mb": 0.3
+  },
+  {
+    "key": "Jump_Conservative_32d4a9e7fa",
+    "model": "Jump",
+    "profile": "Conservative",
+    "sharpe": 0.997,
+    "ann_ret": "11.6%",
+    "switches": 8,
+    "runtime": 513.5,
+    "date": "2026-05-10 20:09",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HSMM_Conservative_855bed7ed1",
+    "model": "HSMM",
+    "profile": "Conservative",
+    "sharpe": 0.647,
+    "ann_ret": "7.5%",
+    "switches": 25,
+    "runtime": 431.6,
+    "date": "2026-05-10 20:25",
+    "size_mb": 0.3
+  },
+  {
+    "key": "ML_Aggressive_e74f88ad7e",
+    "model": "ML",
+    "profile": "Aggressive",
+    "sharpe": 0.953,
+    "ann_ret": "14.0%",
+    "switches": 34,
+    "runtime": 209.1,
+    "date": "2026-05-10 20:53",
+    "size_mb": 0.3
+  },
+  {
+    "key": "Jump_Aggressive_c4edbb0158",
+    "model": "Jump",
+    "profile": "Aggressive",
+    "sharpe": 1.109,
+    "ann_ret": "16.3%",
+    "switches": 8,
+    "runtime": 773.4,
+    "date": "2026-05-10 21:45",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HMM_Aggressive_8cef21daf0",
+    "model": "HMM",
+    "profile": "Aggressive",
+    "sharpe": 0.842,
+    "ann_ret": "12.4%",
+    "switches": 31,
+    "runtime": 57.4,
+    "date": "2026-05-10 21:47",
+    "size_mb": 0.3
+  },
+  {
+    "key": "HSMM_Aggressive_1b376820dc",
+    "model": "HSMM",
+    "profile": "Aggressive",
+    "sharpe": 0.809,
+    "ann_ret": "12.7%",
+    "switches": 25,
+    "runtime": 453.1,
+    "date": "2026-05-10 21:57",
+    "size_mb": 0.3
+  }
+]
