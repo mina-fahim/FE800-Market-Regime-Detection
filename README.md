@@ -4,39 +4,71 @@ Financial Engineering (FE800) project on market regime detection and regime-awar
 ```
 FE800-Market-Regime-Detection
 │
-├── data/                # Raw and processed datasets
-│
-├── notebooks/           # Research notebooks and experiments
-│
-├── src/                 # Main source code
+├── data/                          # Raw and processed datasets
 │   │
-│   ├── models/          # Regime detection models
-│   │   ├── hmm_model.py         |Members: Niti/ Darshan |Reference: HMM vs HSMM (2024)
-│   │   ├── semi_markov_model.py |Members: Nabil/ Willie |Reference: HMM vs HSMM (2024)
-│   │   ├── jump_model.py        |Members: Ojaus         |Reference: Regularized Jump Models (2024)
-│   │   ├── rhsm_model.py        |Members: Niti/ Darshan |Reference: rHSM (2024)
-│   │   └── ml_regime_model.py   |Members: Mina          |Reference: DeePM (2026) and Continuous Jump Model (CJM, 2024)
+│   ├── processed/                    # processed datasets
+│
+├── notebooks/                     # Research notebooks and experiments
+│
+├── src/                           # Main source code
 │   │
-│   ├── data/            # Data loading and preprocessing
+│   ├── models/                    # Regime detection models
+│   │   ├── hmm_model.py           | Members: Niti / Darshan  | Reference: HMM vs HSMM (2024)
+│   │   ├── semi_markov_model.py   | Members: Nabil / Willie  | Reference: HMM vs HSMM (2024)
+│   │   ├── jump_model.py          | Members: Ojaus           | Reference: Regularized Jump Models (2024)
+│   │   ├── jump_models/           | Local package — Continuous Jump Model source
+│   │   └── ml_regime_model.py     | Members: Mina            | Reference: DeePM (2026) & CJM (2024)
+│   │
+│   ├── data/                      # Data loading and preprocessing
 │   │   └── data_loader.py
 │   │
-│   ├── features/        # Feature engineering
+│   ├── features/                  # Feature engineering
 │   │   └── feature_engineering.py
 │   │
-│   ├── portfolio/       # Portfolio allocation logic
+│   ├── portfolio/                 # Mean-variance portfolio optimizer (CVXPY)
 │   │   └── portfolio_allocator.py
 │   │
-│   └── backtest/        # Backtesting engine
+│   └── backtest/                  # Walk-forward backtesting engine
 │       └── backtest_engine.py
 │
-├── results/             # Output results
+├── config/                        # Model and risk profile configuration
+│   └── config.py
+│
+├── dashboard/                     # Shiny for Python interactive dashboard
+│   └── app.py                     
+│
+├── results/                       # Output results
 │   ├── figures/
 │   └── tables/
 │
-├── dashboard/           # Visualization dashboard
+├── docs/                # Final report and presentations
 │
-├── docs/                # Documentation
+├── cache/                         # Cached model runs
+├── exports/                       # PDF exports
 │
-├── requirements.txt     # Python dependencies
+├── requirements.txt               # Python dependencies
 └── README.md
+
 ```
+
+
+## Installation
+
+```bash
+git clone https://github.com/mina-fahim/FE800-Market-Regime-Detection.git
+cd FE800-Market-Regime-Detection
+pip install -r requirements.txt
+pip install -e src/models/jump_models/
+```
+
+---
+
+## Run the Dashboard
+
+```bash
+shiny run dashboard/app.py
+```
+
+
+
+
